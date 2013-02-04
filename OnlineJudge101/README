@@ -1,3 +1,5 @@
+Problem Statement: http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=3&page=show_problem&problem=37
+
 Compile: 'javac Blocks.java'
 Use existing input file: 'java Blocks < input.txt'
 Use random generated input: 'python generateInput.py 25 1000 | java Blocks'
