@@ -1,0 +1,4 @@
+http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=39
+
+Compile: 'javac StackingBoxes.java'
+Use existing input file: 'java StackingBoxes < input.txt'
