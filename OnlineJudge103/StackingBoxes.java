@@ -33,13 +33,13 @@ class StackingBoxes {
   }
 
   private static List<Integer> getLongestSeq(List<Box> boxes, int N) {
-    List<Integer> result = new ArrayList<Integer>(0);
-    int max = 0;
+    List<Integer> result = null;
     if (N==1) {
       result.add(0);
       return result;
     }
     List<List<Integer>> seqs = getSeqs(boxes, 1, N);
+    int max = 0;
     for (List<Integer> seq: seqs) {
       if (boxes.get(0).nests(boxes.get(seq.get(seq.size()-1)))) seq.add(0);
       if (seq.size()>max) {
@@ -59,20 +59,24 @@ class StackingBoxes {
       return result;
     }
 
-    boolean nested = false;
-    List<List<Integer>> seqs= getSeqs(boxes, from+1, N);
+    List<List<Integer>> seqs = getSeqs(boxes, from+1, N);
+    int max = 0;
+    List<Integer> maxseq = null;
     for (List<Integer> seq: seqs) {
       if (boxes.get(from).nests(boxes.get(seq.get(seq.size()-1)))) {
-        seq.add(from);
-        nested = true;
+        if (seq.size()>max) {
+          max = seq.size();
+          maxseq = seq;
+        }
       }
       result.add(seq);
+    }    
+    if (maxseq != null) {
+      List<Integer> newseq = new ArrayList<Integer>(maxseq);
+      newseq.add(from);
+      result.add(newseq);
     }
-    if (!nested) {
-      List<Integer> seq = new ArrayList<Integer>(N);
-      seq.add(from);
-      result.add(seq);
-    }
+
     return result;
   }
 
